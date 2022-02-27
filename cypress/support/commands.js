@@ -27,7 +27,7 @@
 // also pass container size
 Cypress.Commands.add("testComponent", (componentName, props = {}) => {
   cy.visit(
-    `/dev?component=${componentName}&props=${encodeURIComponent(
+    `/dev/component?component=${componentName}&props=${encodeURIComponent(
       JSON.stringify(props)
     )}`
   );
