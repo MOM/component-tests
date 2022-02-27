@@ -11,7 +11,7 @@
         fill="#00DC82"
       />
     </svg>
-    <h1>Title: {{ title }}</h1>
+    <h1 data-test="logo-title">Title: {{ title }}</h1>
   </div>
 </template>
 
