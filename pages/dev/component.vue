@@ -9,10 +9,12 @@
 export default {
   computed: {
     component() {
-      return this.$route.query.component; // "nuxt-logo";
+      return this.$route.query.component;
     },
     props() {
-      return JSON.parse(decodeURIComponent(this.$route.query.props)); // { title: "Title!!!" };
+      return this.$route.query.props
+        ? JSON.parse(decodeURIComponent(this.$route.query.props))
+        : null;
     },
   },
 };

@@ -25,10 +25,10 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 // also pass container size
-Cypress.Commands.add("testComponent", (componentName, props = {}) => {
-  cy.visit(
-    `/dev/component?component=${componentName}&props=${encodeURIComponent(
-      JSON.stringify(props)
-    )}`
-  );
+Cypress.Commands.add("testComponent", (componentName, props) => {
+  let uri = `/dev/component?component=${componentName}`;
+  if (props) {
+    uri += `&props=${encodeURIComponent(JSON.stringify(props))}`;
+  }
+  cy.visit(uri);
 });
