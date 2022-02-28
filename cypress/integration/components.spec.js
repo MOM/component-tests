@@ -10,4 +10,24 @@ describe("Test component", () => {
       .get('[data-test="welcome-header"]')
       .should("contain.text", "Welcome");
   });
+
+  it("ButtonToggle can toggle", () => {
+    cy.testComponent("button-toggle", { offText: "off", onText: "on" })
+      .get('[data-text="toggle-button"]')
+      .should("contain.text", "button off")
+      .click()
+      .should("contain.text", "button on")
+      .click()
+      .should("contain.text", "button off");
+  });
+
+  it("ButtonToggle can start active", () => {
+    cy.testComponent("button-toggle", {
+      offText: "off",
+      onText: "on",
+      startActive: true,
+    })
+      .get('[data-text="toggle-button"]')
+      .should("contain.text", "button on");
+  });
 });

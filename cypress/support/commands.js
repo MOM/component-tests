@@ -26,7 +26,7 @@
 
 // also pass container size
 Cypress.Commands.add("testComponent", (componentName, props) => {
-  let uri = `/dev/component?component=${componentName}`;
+  let uri = `/test-component?component=${componentName}`;
   if (props) {
     uri += `&props=${encodeURIComponent(JSON.stringify(props))}`;
   }

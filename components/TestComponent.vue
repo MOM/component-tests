@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>Dev {{ component }}</h1>
+  <div class="w-screen h-screen flex flex-row justify-center items-center">
     <component :is="component" v-bind="props"></component>
   </div>
 </template>
