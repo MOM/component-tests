@@ -1,12 +1,25 @@
 <template>
-  <button data-text="toggle-button" @click="toggle" class="border-2 px-2">
+  <button data-text="toggle-button" @click="toggle" class="border-2 px-2 w-36">
     button {{ text }}
   </button>
 </template>
 
 <script>
 export default {
-  props: ["offText", "onText", "startActive"],
+  props: {
+    offText: {
+      type: String,
+      default: "inactive",
+    },
+    onText: {
+      type: String,
+      default: "active",
+    },
+    startActive: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       active: this.startActive,
