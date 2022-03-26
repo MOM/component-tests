@@ -8,7 +8,7 @@ export default function () {
     nuxt.options.router.extendRoutes = (routes, resolve) => {
       routes.push({
         name: "test-component",
-        path: "/test-component",
+        path: "/_test-component",
         component: resolve(__dirname, "components/TestComponent.vue"),
       });
     };
