@@ -5,4 +5,10 @@ describe("Test Banner component", () => {
       .get('[data-test="banner:message"]')
       .should("contain.text", message);
   });
+  it("Banner hover background color", () => {
+    cy.testComponent("banner", { message: "click me" })
+      .get('[data-test="banner"]')
+      .realHover()
+      .should("have.css", "background-color", "rgb(231, 234, 248)");
+  });
 });
