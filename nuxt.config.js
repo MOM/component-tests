@@ -26,6 +26,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
+    "test-component",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -33,16 +34,4 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-  router:
-    process.env.NODE_ENV == "production"
-      ? undefined
-      : {
-          extendRoutes(routes, resolve) {
-            routes.push({
-              name: "test-component",
-              path: "/test-component",
-              component: resolve(__dirname, "components/TestComponent.vue"),
-            });
-          },
-        },
 };
