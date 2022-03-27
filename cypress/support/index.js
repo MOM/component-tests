@@ -13,7 +13,7 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 import "cypress-real-events/support";
-import "test-component/support";
+import "cyco/cypress/support";
 // Import commands.js using ES2015 syntax:
 import "./commands";
 

@@ -10,7 +10,7 @@
     "test": "cypress open"
   },
   "workspaces": [
-    "test-component"
+    "cyco"
   ],
   "dependencies": {
     "core-js": "^3.19.3",

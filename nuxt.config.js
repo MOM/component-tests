@@ -26,7 +26,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
-    "test-component",
+    "cyco",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
