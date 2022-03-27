@@ -53,7 +53,7 @@ it("MyButton can render the label", () => {
 
 Notice how the `testComponent` method is available to test a component and pass it props:
 
-> `cy.testComponent(componentName: String, props: Object)`
+`cy.testComponent(componentName: String, props: Object)`
 
 ### Run spec to view single component
 
