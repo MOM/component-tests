@@ -2,10 +2,7 @@
 
 ## Cypress Component Testing
 
-CyCo is a nuxt module that facilitates component developement and testing using Cypress.
-
-- Render single components with props
-- Test a component with Cypress
+CyCo is a [nuxt](https://nuxtjs.org/) module that lets you test a single component in [Cypress](https://www.cypress.io/) using `cy.testComponent`.
 
 ## Installation
 
@@ -25,15 +22,15 @@ import "cyco/cypress/support";
 
 `/components/MyButton.vue`
 
-```
+```html
 <template>
   <button data-test="my-button">{{ label }}</button>
 </template>
 
 <script>
-export default {
-  props: ["label"],
-};
+  export default {
+    props: ["label"],
+  };
 </script>
 ```
 
@@ -41,7 +38,7 @@ export default {
 
 `/cypress/integration/components/MyButton.js`
 
-```
+```javascript
 it("MyButton can render the label", () => {
   const label = "My Button";
   const props = { label };
@@ -51,12 +48,16 @@ it("MyButton can render the label", () => {
 });
 ```
 
-Notice how the `testComponent` method is available to test a component and pass it props:
+### API
 
 `cy.testComponent(componentName: String, props: Object)`
 
-### Run spec to view single component
+### Run test to view single component
 
 ![My Button Screen Shot](./docs/MyButtonScreenShot.png "My Button Test Run")
 
 ### Iterate on component tests and development
+
+- Different props can be used in multiple tests
+- Use `it.only()` to focus on one test senario at a time
+- Hot reload time reduced as component rather than page is rendered
