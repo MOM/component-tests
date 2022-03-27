@@ -23,9 +23,9 @@ import "cyco/cypress/support";
 
 ### Create a component
 
-```
-/components/MyButton.vue
+`/components/MyButton.vue`
 
+```
 <template>
   <button data-test="my-button">{{ label }}</button>
 </template>
@@ -39,9 +39,9 @@ export default {
 
 ### Create a component test
 
-```
-/cypress/integration/components/MyButton.js
+`/cypress/integration/components/MyButton.js`
 
+```
 it("MyButton can render the label", () => {
   const label = "My Button";
   const props = { label };
@@ -51,7 +51,8 @@ it("MyButton can render the label", () => {
 });
 ```
 
-> Notice how this method is available to test a component and pass it props:
+Notice how the `testComponent` method is available to test a component and pass it props:
+
 > `cy.testComponent(componentName: String, props: Object)`
 
 ### Run spec to view single component
