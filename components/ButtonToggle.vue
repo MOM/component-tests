@@ -1,33 +1,34 @@
 <template>
-  <button data-text="toggle-button" @click="toggle" class="border-2 px-2 w-36">
-    button {{ text }}
+  <button
+    class="button-toggle border-2 px-2 w-36"
+    :class="{ inactive: !active }"
+    data-test="toggle-button"
+    @click="toggle"
+  >
+    {{ label }}
   </button>
 </template>
 
 <script>
 export default {
   props: {
-    offText: {
+    activeLabel: {
       type: String,
       default: "inactive",
     },
-    onText: {
+    inactiveLabel: {
       type: String,
       default: "active",
-    },
-    startActive: {
-      type: Boolean,
-      default: false,
     },
   },
   data() {
     return {
-      active: this.startActive,
+      active: false,
     };
   },
   computed: {
-    text() {
-      return this.active ? this.onText : this.offText;
+    label() {
+      return this.active ? this.activeLabel : this.inactiveLabel;
     },
   },
   methods: {
@@ -37,3 +38,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.inactive {
+  color: gray;
+}
+</style>

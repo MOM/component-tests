@@ -7,13 +7,6 @@ CyCo is a nuxt module that facilitates component developement and testing using 
 - Render single components with props
 - Test a component with Cypress
 
-## Workflow
-
-- Create a component
-- Create a component spec
-- Run spec to view single component
-- Iterate on component tests and development
-
 ## Installation
 
 ```
@@ -25,3 +18,19 @@ yarn add -D cyco
 ```
 import "cyco/cypress/support";
 ```
+
+## Workflow
+
+### Create a component
+
+`/components/Button.vue`
+
+```
+
+```
+
+### Create a component spec
+
+### Run spec to view single component
+
+### Iterate on component tests and development
