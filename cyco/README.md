@@ -27,7 +27,7 @@ import "cyco/cypress/support";
 ### Create a component
 
 ```html
-<!-- /components/MyButton.vue -->
+<!-- components/MyButton.vue -->
 
 <template>
   <button data-test="my-button">{{ label }}</button>
@@ -60,7 +60,7 @@ it("MyButton can render the label", () => {
 
 ### Iterate on component tests and development
 
-- Different props can be used in multiple tests
+- Write multiple tests using different props
 - Use `it.only()` to focus on one test criteria at a time
 - Hot reload time reduced as component rather than page is rendered
 
