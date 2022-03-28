@@ -10,9 +10,15 @@ CyCo is a [nuxt](https://nuxtjs.org/) module that lets you test a single compone
 yarn add -D cyco
 ```
 
-`cypress/support/index.js`
+```javascript
+// nuxt.config
 
+buildModules: ["cyco"],
 ```
+
+```javascript
+// cypress/support/index.js
+
 import "cyco/cypress/support";
 ```
 
@@ -20,9 +26,9 @@ import "cyco/cypress/support";
 
 ### Create a component
 
-`/components/MyButton.vue`
-
 ```html
+<!-- /components/MyButton.vue -->
+
 <template>
   <button data-test="my-button">{{ label }}</button>
 </template>
@@ -36,9 +42,9 @@ import "cyco/cypress/support";
 
 ### Create a component test
 
-`/cypress/integration/components/MyButton.js`
-
 ```javascript
+// cypress/integration/components/MyButton.js
+
 it("MyButton can render the label", () => {
   const label = "My Button";
   const props = { label };
@@ -48,10 +54,6 @@ it("MyButton can render the label", () => {
 });
 ```
 
-### API
-
-`cy.testComponent(componentName: String, props: Object)`
-
 ### Run test to view single component
 
 ![My Button Screen Shot](./docs/MyButtonScreenShot.png "My Button Test Run")
@@ -59,5 +61,9 @@ it("MyButton can render the label", () => {
 ### Iterate on component tests and development
 
 - Different props can be used in multiple tests
-- Use `it.only()` to focus on one test senario at a time
+- Use `it.only()` to focus on one test criteria at a time
 - Hot reload time reduced as component rather than page is rendered
+
+## API
+
+`cy.testComponent(componentName: String, props: Object)`
