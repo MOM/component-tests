@@ -53,12 +53,10 @@ export default {
         clearTimeout(scrollTimeout);
       } else {
         this.scrolling = true;
-        console.log("Started scrolling");
       }
       scrollTimeout = setTimeout(() => {
         scrollTimeout = null;
         this.scrolling = false;
-        console.log("Stopped scrolling");
       }, 250);
     });
   },
@@ -106,7 +104,7 @@ export default {
   grid-row-gap: 1rem;
   flex-wrap: wrap;
   overflow: scroll;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
 }
 .snap {
