@@ -1,6 +1,7 @@
 <template>
   <div>
-    <ul class="gallery">
+    <div>Scrolling? {{ scrolling }}</div>
+    <ul ref="gallery" class="gallery">
       <li v-for="i in range" :key="i" tabindex="0">
         {{ i }}
       </li>
@@ -9,7 +10,14 @@
 </template>
 
 <script>
+let scrollTimeout;
+
 export default {
+  data() {
+    return {
+      scrolling: false,
+    };
+  },
   computed: {
     range() {
       const result = [];
@@ -18,6 +26,21 @@ export default {
       }
       return result;
     },
+  },
+  mounted() {
+    this.$refs.gallery.addEventListener("scroll", function (e) {
+      if (this.scrolling) {
+        clearTimeout(scrollTimeout);
+      } else {
+        this.scrolling = true;
+        console.log("Started scrolling");
+      }
+      scrollTimeout = setTimeout(() => {
+        scrollTimeout = null;
+        this.scrolling = false;
+        console.log("Stopped scrolling");
+      }, 250);
+    });
   },
 };
 </script>
@@ -33,6 +56,7 @@ export default {
   grid-row-gap: 1rem;
   flex-wrap: wrap;
   overflow: scroll;
+  width: 100vw;
   height: 100vh;
   scroll-snap-type: both mandatory;
   scroll-padding: 1rem;
@@ -44,5 +68,8 @@ li {
   border-radius: 3px;
   height: 15vw;
   background: #cccccc;
+}
+li:focus {
+  outline: 1px solid red;
 }
 </style>
