@@ -1,7 +1,15 @@
 <template>
   <div>
     <div>Scrolling? {{ scrolling }}</div>
-    <ul ref="gallery" class="gallery">
+    <ul
+      ref="gallery"
+      class="gallery"
+      :class="{ snap: !clicked }"
+      @mousedown="onMousedown"
+      @mouseup="onMouseup"
+      @mouseout="onMouseup"
+      @mousemove="onMousemove"
+    >
       <li v-for="i in range" :key="i" tabindex="0">
         {{ i }}
       </li>
@@ -16,6 +24,9 @@ export default {
   data() {
     return {
       scrolling: false,
+      clicked: false,
+      clickX: 0,
+      clickY: 0,
     };
   },
   computed: {
@@ -42,6 +53,24 @@ export default {
       }, 250);
     });
   },
+  methods: {
+    onMousedown(e) {
+      this.clicked = true;
+      this.clickX = e.layerX;
+      this.clickY = e.layerY;
+    },
+    onMouseup(e) {
+      this.clicked = false;
+    },
+    onMousemove(e) {
+      if (this.clicked) {
+        this.$refs.gallery.scrollBy(
+          this.clickX - e.layerX,
+          this.clickY - e.layerY
+        );
+      }
+    },
+  },
 };
 </script>
 
@@ -58,6 +87,8 @@ export default {
   overflow: scroll;
   width: 100vw;
   height: 100vh;
+}
+.snap {
   scroll-snap-type: both mandatory;
   scroll-padding: 1rem;
 }
