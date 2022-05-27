@@ -1,9 +1,11 @@
 <template>
-  <Tutorial/>
+  <scroll-grid />
 </template>
 
 <script>
+import ScrollGrid from "../components/ScrollGrid.vue";
 export default {
-  name: 'IndexPage'
-}
+  components: { ScrollGrid },
+  name: "IndexPage",
+};
 </script>
