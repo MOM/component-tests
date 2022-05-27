@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>Scrolling? {{ scrolling }}</div>
     <ul
       ref="gallery"
       class="gallery"
@@ -10,7 +9,17 @@
       @mouseout="onMouseup"
       @mousemove="onMousemove"
     >
-      <li v-for="i in range" :key="i" tabindex="0" @focus="onFocus">
+      <li
+        :ref="`galleryItem${i}`"
+        v-for="i in range"
+        :key="i"
+        tabindex="0"
+        @focus="onFocus"
+        @keydown.down.prevent="goToItem(i + 10)"
+        @keydown.up.prevent="goToItem(i - 10)"
+        @keydown.left.prevent="goToItem(i - 1)"
+        @keydown.right.prevent="goToItem(i + 1)"
+      >
         {{ i }}
       </li>
     </ul>
@@ -76,6 +85,12 @@ export default {
         e.target.scrollIntoView({ behavior: "smooth" });
       }
     },
+    goToItem(i) {
+      const next = this.$refs[`galleryItem${i}`];
+      if (next) {
+        next[0].focus();
+      }
+    },
   },
 };
 </script>
@@ -108,5 +123,6 @@ li {
 }
 li:focus {
   outline: 1px solid red;
+  background: red;
 }
 </style>
