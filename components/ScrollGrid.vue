@@ -10,7 +10,7 @@
       @mouseout="onMouseup"
       @mousemove="onMousemove"
     >
-      <li v-for="i in range" :key="i" tabindex="0">
+      <li v-for="i in range" :key="i" tabindex="0" @focus="onFocus">
         {{ i }}
       </li>
     </ul>
@@ -68,6 +68,12 @@ export default {
           this.clickX - e.layerX,
           this.clickY - e.layerY
         );
+      }
+    },
+    onFocus(e) {
+      console.log(e);
+      if (!this.clicked) {
+        e.target.scrollIntoView({ behavior: "smooth" });
       }
     },
   },
